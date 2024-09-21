@@ -1,9 +1,41 @@
-﻿@inherits LayoutComponentBase
-<RadzenComponents @rendermode="InteractiveServer" />
-@Body
+@inherits LayoutComponentBase
+@inject CookieThemeService CookieThemeService
+@inject AppConfig AppConfig
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+<RadzenComponents />
+
+<RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
+    <RadzenHeader>
+        <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenColumn Size="5">
+                <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
+            </RadzenColumn>
+            <RadzenColumn Size="7">
+                <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="0.5rem" class="rz-px-2">
+                    <RadzenAppearanceToggle />
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenHeader>
+    <RadzenBody Expanded="@sidebarExpanded">
+        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+            <RadzenColumn Size="12">
+            @Body
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenBody>
+    <RadzenSidebar Expanded="@sidebarExpanded" style="z-index: 2">
+        <RadzenStack AlignItems="AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);">
+            <RadzenImage Path="images/logo.png"  style="width: 48px; height: 48px;" AlternateText="Application logo"></RadzenImage>
+            <RadzenText Text="CloudAnalytic" TextStyle="TextStyle.Subtitle1" class="rz-mb-0" style="color: var(--rz-sidebar-color);" />
+        </RadzenStack>
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Path="" />
+        </RadzenPanelMenu>
+        <RadzenStack AlignItems="AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
+            <RadzenText Text=@($"CloudAnalytic v{AppConfig.Version}") TextStyle="TextStyle.Caption" TagName="TagName.P" TextAlign="TextAlign.Center" />
+            <RadzenText Text="© 2024 Viov Software Development." TextStyle="TextStyle.Caption" class="rz-mb-0" TagName="TagName.P" TextAlign="TextAlign.Center" />
+            <RadzenText Text="All rights reserved." TextStyle="TextStyle.Caption" class="rz-mb-0" TagName="TagName.P" TextAlign="TextAlign.Center" />
+        </RadzenStack>
+    </RadzenSidebar>
+</RadzenLayout>
