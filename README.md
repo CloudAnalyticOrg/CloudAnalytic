@@ -83,6 +83,16 @@ CloudAnalytic is a free and open-source web application built using Blazor on .N
 
 1. **Analyzing User Behavior**:  
    Access the CloudAnalytic dashboard to view pseudo users, track their page visits, and see whether they completed any conversion actions like purchases.
+   
+## Premium Support
+
+We offer **Premium Support** for $30/month, which includes:
+
+- **Installation Support**: Help with setting up CloudAnalytic on your Windows or Linux server/VPS.
+- **Direct Issue Support**: Priority assistance for any issues that arise with the application.
+- **Feature Requests**: Request new features or enhancements, and we’ll work with you to implement them.
+
+If you're interested in premium support, feel free to reach out to us at [info@viov.nl].
 
 ## Contributing
 
