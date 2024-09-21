@@ -19,19 +19,15 @@ jobs:
         node-version: '14'
 
     - name: Increment version
-      id: increment_version
       run: |
         VERSION=$(jq -r '.AppConfig.Version' appsettings.Development.json)
         NEW_VERSION=$(echo $VERSION | awk -F. -v OFS=. '{$NF++;print}')
         jq --arg new_version "$NEW_VERSION" '.AppConfig.Version = $new_version' appsettings.Development.json > tmp.$$.json && mv tmp.$$.json appsettings.Development.json
-        echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
 
     - name: Commit changes
-      env:
-        CLOUDANALYTICSECRET: ${{ secrets.CLOUDANALYTICSECRET }}
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add appsettings.Development.json
-        git commit -m "Increment version to ${{ env.new_version }}"
-        git push https://x-access-token:${CLOUDANALYTICSECRET}@github.com/${{ github.repository }}.git HEAD:main
+        git commit -m "Increment version to $NEW_VERSION"
+        git push
