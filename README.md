@@ -92,7 +92,7 @@ We offer **Premium Support** for $30/month, which includes:
 - **Direct Issue Support**: Priority assistance for any issues that arise with the application.
 - **Feature Requests**: Request new features or enhancements, and we’ll work with you to implement them.
 
-If you're interested in premium support, feel free to reach out to us at [info@viov.nl].
+If you're interested in premium support, feel free to reach out to us at info@viov.nl
 
 ## Contributing
 
